@@ -146,7 +146,7 @@ const useLocalServer=location.protocol!=='file:'&&!location.hostname.endsWith('g
 let pt;
 function push(){if(!useLocalServer)return;clearTimeout(pt);pt=setTimeout(()=>{const d={};['csp_t','csp_p','csp_f'].forEach(k=>d[k]=localStorage.getItem(k));fetch('/api/data',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)}).catch(()=>{})},400)}
 const sv=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){alert('Browser storage is full. Remove a few photos and try again.')}push()};
-let tx=ld('csp_t',{}),ph=ld('csp_p',{}),fb=ld('csp_f',[]),op=new Set([0]),ed=false;
+let tx=ld('csp_t',{}),ph=ld('csp_p',{}),fb=ld('csp_f',[]),op=new Set(),ed=false;
 const T=(k,d,c='')=>`<span data-e="${k}"${c?` class="${c}"`:''}>${esc(tx[k]??d)}</span>`;
 
 const W=[
@@ -159,7 +159,17 @@ const W=[
 ["Feedback & Review","Mini project","Collected feedback on the programme from the people it reached.",["Asked about awareness, participation and obstacles to planting.","Noted what worked and what to improve.","Added the responses below."]],
 ["Website Creation","Mini project","Built this website to present the project and its journey.",["Designed the home page and sections for the journey, student details and project notes.","Built it so photos and text can be updated at any time.","Technology used is listed below."]]];
 
-const gal=k=>`<div class="g">${(ph[k]||[]).map((s,i)=>`<figure><img src="${s}" alt="Project photo" data-z><button class="x" data-r="${k}|${i}" aria-label="Remove photo">×</button></figure>`).join('')}</div><label class="add">+ Add photos<input type="file" accept="image/*" multiple hidden data-p="${k}"></label>`;
+const weekOnePhotos=[
+["images/week-1/week-1-01.png","Students meeting a community member during the Week 1 survey"],
+["images/week-1/week-1-02.png","Students discussing the Week 1 community survey"],
+["images/week-1/week-1-03.png","Student team sharing a project document with a community representative"],
+["images/week-1/week-1-04.png","Student team outside a community building"]
+];
+const gal=k=>{
+ const defaults=k==='w0'?weekOnePhotos:[];
+ const photos=defaults.map(([src,alt])=>`<figure><img src="${src}" alt="${alt}" data-z></figure>`).join('')+(ph[k]||[]).map((src,i)=>`<figure><img src="${src}" alt="Project photo" data-z><button class="x" data-r="${k}|${i}" aria-label="Remove photo">×</button></figure>`).join('');
+ return `${photos?'<h4>Photo gallery</h4>':''}<div class="g">${photos}</div><label class="add">+ Add photos<input type="file" accept="image/*" multiple hidden data-p="${k}"></label>`;
+};
 
 const fbh=()=>`<h4>Feedback received</h4>${fb.map((f,i)=>`<blockquote><p>“${esc(f.c)}”</p><cite>— ${esc(f.n)}</cite><button class="x2" data-fd="${i}" aria-label="Delete">×</button></blockquote>`).join('')||'<p class="mut">No feedback added yet.</p>'}<div class="fbf"><input class="f" id="fn" placeholder="Name / role"><textarea id="fc" rows="2" placeholder="What did they say?"></textarea><button class="btn" id="fba">Add feedback</button></div>`;
 

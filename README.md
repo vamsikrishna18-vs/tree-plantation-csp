@@ -8,7 +8,7 @@ Showcase website for my CSP (Raju Palem, Nellore).
 - script.js - interactions, photo upload and saving
 - server.js - local Node.js server (saves edits to data.json)
 - package.json - run script
-- images/ - keep your own project photos here
+- images/week-1/ - photos shown in the Week 1 gallery
 
 ## Run on localhost
 1. Install Node.js (nodejs.org) if you don't have it.
