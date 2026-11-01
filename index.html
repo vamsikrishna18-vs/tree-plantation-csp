@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tree Plantation · Community Service Project</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600&display=swap">
+<style>
+:root{--bg:#07140e;--ink:#e9f5e4;--mut:#9db8a3;--acc:#8fe388;--gold:#e9c46a;--card:rgba(255,255,255,.06);--line:rgba(255,255,255,.13);color-scheme:dark;box-sizing:border-box}
+@media (prefers-color-scheme:dark){:root{--bg:#07140e}}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%}
+body{background:radial-gradient(120% 90% at 50% 100%,#14452a 0,var(--bg) 62%) #07140e;color:var(--ink);font:16px/1.65 Inter,system-ui,sans-serif;overflow:hidden}
+#cv{position:fixed;inset:0;width:100%;height:100%;pointer-events:none}
+#home{position:fixed;inset:0;display:grid;place-items:center;text-align:center;padding:24px}
+.hero{display:flex;flex-direction:column;align-items:center;gap:10px}
+.tree{width:min(44vw,240px);height:auto;overflow:visible}
+.kick{letter-spacing:.32em;text-transform:uppercase;font-size:.72rem;color:var(--acc);animation:rise 1s .4s both}
+h1{font:600 clamp(2.6rem,10vw,6rem)/1 Fraunces,Georgia,serif;letter-spacing:-.02em;background:linear-gradient(90deg,#e4ffd9,var(--acc),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent;animation:rise 1.2s .7s both}
+.tag{color:var(--mut);max-width:34ch;animation:rise 1.2s 1s both}
+.stats{display:flex;gap:22px;flex-wrap:wrap;justify-content:center;font-size:.8rem;color:var(--mut);letter-spacing:.08em;text-transform:uppercase;animation:rise 1.2s 1.3s both}
+.stats b{color:var(--ink);font:600 1.3rem Fraunces,Georgia,serif;display:block;letter-spacing:0}
+@keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+.tree .tr path{stroke-dasharray:1;stroke-dashoffset:1;animation:dr 1.3s ease-out forwards}
+.tree .tr path:nth-child(2){animation-delay:.9s}.tree .tr path:nth-child(3){animation-delay:1.1s}
+@keyframes dr{to{stroke-dashoffset:0}}
+.can{transform-origin:100px 150px;animation:sw 7s 3s ease-in-out infinite}
+.can circle{transform-box:fill-box;transform-origin:center;transform:scale(0);animation:pop .9s var(--d) cubic-bezier(.3,1.5,.5,1) forwards}
+@keyframes pop{to{transform:scale(1)}}
+@keyframes sw{50%{transform:rotate(1.6deg)}}
+.c{position:fixed;z-index:5;animation:rise 1s 1.6s both}
+.brand{top:calc(18px + env(safe-area-inset-top,0px));left:20px;font:500 .95rem Fraunces,Georgia,serif;color:var(--mut)}
+.c.t{top:calc(14px + env(safe-area-inset-top,0px));right:16px}
+.c.l{bottom:calc(18px + env(safe-area-inset-bottom,0px));left:16px}
+.c.r{bottom:calc(18px + env(safe-area-inset-bottom,0px));right:16px}
+.btn{display:inline-block;padding:10px 18px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.07);backdrop-filter:blur(8px);color:var(--ink);text-decoration:none;font:500 .85rem Inter,sans-serif;cursor:pointer;transition:.25s}
+.btn:hover{background:rgba(143,227,136,.18);border-color:var(--acc);box-shadow:0 0 22px rgba(143,227,136,.25)}
+.panel{position:fixed;inset:0;z-index:10;background:rgba(5,16,10,.97);overflow-y:auto;padding:0 20px 90px;transform:translateY(100%);visibility:hidden;transition:transform .55s cubic-bezier(.2,.8,.2,1),visibility 0s .55s}
+.panel.open{transform:none;visibility:visible;transition-delay:0s}
+.bar{position:sticky;top:0;z-index:2;display:flex;justify-content:space-between;align-items:center;gap:10px;max-width:880px;margin:0 auto;padding:calc(14px + env(safe-area-inset-top,0px)) 0 14px;background:rgba(5,16,10,.92);backdrop-filter:blur(10px)}
+.wrap{max-width:880px;margin:0 auto}
+h2{font:600 clamp(1.8rem,5vw,2.6rem)/1.15 Fraunces,Georgia,serif;margin:10px 0 6px}
+h3{font:600 1.15rem Fraunces,Georgia,serif;color:var(--gold);margin-bottom:8px}
+h4{margin:18px 0 8px;color:var(--acc);font-size:.95rem}
+.mut,small{color:var(--mut)}
+.lead{color:var(--mut);margin-bottom:22px;max-width:60ch}
+.tl{border-left:2px solid var(--line);margin-left:10px;padding-left:22px}
+.wk{position:relative;margin-bottom:14px;background:var(--card);border:1px solid var(--line);border-radius:16px}
+.wk::before{content:"";position:absolute;left:-30px;top:22px;width:12px;height:12px;border-radius:50%;background:var(--acc);box-shadow:0 0 14px var(--acc)}
+.wk.m::before{background:var(--gold);box-shadow:0 0 14px var(--gold)}
+.wh{display:flex;align-items:center;gap:14px;padding:14px 16px;cursor:pointer}
+.wh>b{font:600 1.6rem Fraunces,Georgia,serif;color:var(--acc);min-width:28px}
+.wh>div{flex:1}.wt{font-weight:600}.ph{display:block}
+.ch{transition:.3s;color:var(--mut)}.wk.o .ch{transform:rotate(180deg)}
+.wb{display:none;padding:0 18px 18px}.wk.o .wb{display:block;animation:rise .4s both}
+.wb ul{margin:10px 0 0 20px}.wb li{margin:4px 0}.dt{font-size:.85rem;color:var(--gold);margin-bottom:6px}
+.g{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;margin-top:12px}
+.g figure{position:relative}.g img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:10px;cursor:zoom-in;display:block}
+.x,.x2{display:none;position:absolute;top:4px;right:4px;width:26px;height:26px;border-radius:50%;border:0;background:rgba(0,0,0,.7);color:#fff;cursor:pointer}
+body.edit .x,body.edit .x2{display:block}
+.add,.eo{display:none}
+body.edit .add{display:inline-block;margin-top:10px;padding:7px 14px;border:1px dashed var(--acc);border-radius:10px;color:var(--acc);cursor:pointer;font-size:.85rem}
+body.edit .eo{display:block}
+body.edit [data-e]{outline:1px dashed rgba(143,227,136,.55);outline-offset:2px;border-radius:3px;min-width:20px;display:inline-block}
+[data-e].pre{white-space:pre-wrap;display:block}
+blockquote{position:relative;background:rgba(255,255,255,.05);border-left:3px solid var(--gold);padding:10px 36px 10px 14px;border-radius:8px;margin:8px 0}
+cite{font-size:.82rem;color:var(--mut)}.x2{top:8px}
+.fbf{display:none;gap:8px;flex-direction:column;margin-top:10px}body.edit .fbf{display:flex}
+input.f,textarea{background:rgba(255,255,255,.07);border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:9px 12px;font:inherit}
+.g3{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.cd{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.cd li{margin:6px 0 6px 18px}
+pre.f{background:#04100a;border:1px solid var(--line);border-radius:10px;padding:12px;margin-top:10px;font:.85rem/1.6 ui-monospace,Menlo,monospace;color:var(--acc)}
+.av{display:grid;place-items:center;width:120px;height:120px;border-radius:50%;background:linear-gradient(135deg,#1f6b3a,#0d2417);border:2px solid var(--acc);font:600 2rem Fraunces,serif;overflow:hidden;pointer-events:none;margin:6px 0 16px}
+body.edit .av{pointer-events:auto;cursor:pointer}.av img{width:100%;height:100%;object-fit:cover}
+dl{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px}
+dl div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px}
+dt{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)}dd{font-weight:500}
+.sl{font:italic 500 1.05rem Fraunces,Georgia,serif;color:var(--acc)}
+#lb{position:fixed;inset:0;z-index:30;background:rgba(0,0,0,.9);display:none;place-items:center;padding:20px}
+#lb.on{display:grid}#lb img{max-width:100%;max-height:100%;border-radius:12px}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01s!important;animation-delay:0s!important}}
+</style>
+</head>
+<body>
+<canvas id="cv"></canvas>
+
+<main id="home">
+  <div class="hero">
+    <svg class="tree" viewBox="0 0 200 210" aria-hidden="true">
+      <ellipse cx="100" cy="203" rx="62" ry="6" fill="#0b2a18"/>
+      <g class="tr" fill="none" stroke="#8b5e34" stroke-linecap="round">
+        <path d="M100 203 C101 170 98 150 100 112" stroke-width="9" pathLength="1"/>
+        <path d="M100 152 C86 142 78 132 72 118" stroke-width="5" pathLength="1"/>
+        <path d="M100 140 C115 130 123 121 130 108" stroke-width="5" pathLength="1"/>
+      </g>
+      <g class="can">
+        <circle cx="100" cy="82" r="38" fill="#2f8f4e" style="--d:1.5s"/>
+        <circle cx="70" cy="100" r="28" fill="#3aa65c" style="--d:1.7s"/>
+        <circle cx="132" cy="98" r="28" fill="#27803f" style="--d:1.9s"/>
+        <circle cx="100" cy="54" r="26" fill="#52c176" style="--d:2.1s"/>
+        <circle cx="76" cy="68" r="22" fill="#44b068" style="--d:2.3s"/>
+        <circle cx="126" cy="68" r="22" fill="#359a55" style="--d:2.5s"/>
+      </g>
+    </svg>
+    <div class="kick">Community Service Project · 2026–27</div>
+    <h1>Tree Plantation</h1>
+    <p class="tag">Save the planet, save a tree.<br>Raju Palem, Nellore · Andhra Pradesh</p>
+    <div class="stats"><div><b>8</b>Weeks</div><div><b>2</b>Schools</div><div><b>1</b>Community</div></div>
+  </div>
+</main>
+
+<span class="c brand">K. Vamsi Krishna</span>
+<a class="c t btn" href="#student">Student Details</a>
+<a class="c l btn" href="#journey">Project Journey</a>
+<a class="c r btn" href="#info">More Information</a>
+
+<section class="panel" id="journey" aria-label="Project journey">
+  <div class="bar"><a class="btn" href="#home">← Home</a><button class="btn ed">✎ Edit</button></div>
+  <div class="wrap">
+    <h2>Project Journey</h2>
+    <p class="lead">Six weeks in the field planting and teaching, followed by a two-week mini project. Tap a week to open it.</p>
+    <div class="tl" id="tl"></div>
+  </div>
+</section>
+
+<section class="panel" id="student" aria-label="Student details">
+  <div class="bar"><a class="btn" href="#home">← Home</a><button class="btn ed">✎ Edit</button></div>
+  <div class="wrap">
+    <h2>Student Details</h2>
+    <div id="sd"></div>
+  </div>
+</section>
+
+<section class="panel" id="info" aria-label="More information">
+  <div class="bar"><a class="btn" href="#home">← Home</a><button class="btn ed">✎ Edit</button></div>
+  <div class="wrap" id="inf"></div>
+</section>
+
+<div id="lb"><img alt=""></div>
+
+<script>
+const $=s=>document.querySelector(s),esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const ld=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))||d}catch(e){return d}};
+const useLocalServer=location.protocol!=='file:'&&!location.hostname.endsWith('github.io');
+let pt;
+function push(){if(!useLocalServer)return;clearTimeout(pt);pt=setTimeout(()=>{const d={};['csp_t','csp_p','csp_f'].forEach(k=>d[k]=localStorage.getItem(k));fetch('/api/data',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)}).catch(()=>{})},400)}
+const sv=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){alert('Browser storage is full. Remove a few photos and try again.')}push()};
+let tx=ld('csp_t',{}),ph=ld('csp_p',{}),fb=ld('csp_f',[]),op=new Set([0]),ed=false;
+const T=(k,d,c='')=>`<span data-e="${k}"${c?` class="${c}"`:''}>${esc(tx[k]??d)}</span>`;
+
+const W=[
+["Survey & Awareness","Field project","With the ward member’s permission, I surveyed my locality to see how people felt about planting trees.",["Planned a schedule and visited households and shops.","Found that people were unaware of tree benefits and were cutting trees for daily needs.","Explained uses of trees, soil erosion and what happens if we stop planting."]],
+["Awareness & First Plantings","Field project","I prepared survey questions, then moved from talking to planting.",["Asked villagers about their views on planting.","Bought saplings from village nurseries and gave them to families.","Planted in public areas so neighbours could join in."]],
+["Schools & Plant Study","Field project","Visited schools, planted with students and studied what young plants need.",["Planted and watered saplings in school and near shops and homes.","Distributed plants to students.","Visited a nursery, spread nutrients and cleared waste around plants."]],
+["ZP High School Programme","Field project","Took permission from the school principal and ran a tree plantation programme.",["Explained the importance of trees to students with real examples.","Pasted pamphlets and posters around the school.","Planted trees in school and along the roadside with the students."]],
+["Caring for the Plants","Field project","Revisited every plant from the first four weeks and fixed what was going wrong.",["Found some plants with dried leaves and no growth.","Applied natural fertilisers such as compost, manure and grass clippings.","Planted new trees with proper spacing for healthy growth."]],
+["Awareness Rally","Field project","Took the message to people who had little formal education.",["Used posters, pictures and pamphlets to explain uses and benefits of trees.","Held a small rally with slogans like “Save tree save life”.","Pasted pamphlets in public places and watered earlier plantings."]],
+["Feedback & Review","Mini project","Collected feedback on the programme from the people it reached.",["Asked about awareness, participation and obstacles to planting.","Noted what worked and what to improve.","Added the responses below."]],
+["Website Creation","Mini project","Built this website to present the project and its journey.",["Designed the home page and sections for the journey, student details and project notes.","Built it so photos and text can be updated at any time.","Technology used is listed below."]]];
+
+const gal=k=>`<div class="g">${(ph[k]||[]).map((s,i)=>`<figure><img src="${s}" alt="Project photo" data-z><button class="x" data-r="${k}|${i}" aria-label="Remove photo">×</button></figure>`).join('')}</div><label class="add">+ Add photos<input type="file" accept="image/*" multiple hidden data-p="${k}"></label>`;
+
+const fbh=()=>`<h4>Feedback received</h4>${fb.map((f,i)=>`<blockquote><p>“${esc(f.c)}”</p><cite>— ${esc(f.n)}</cite><button class="x2" data-fd="${i}" aria-label="Delete">×</button></blockquote>`).join('')||'<p class="mut">No feedback added yet.</p>'}<div class="fbf"><input class="f" id="fn" placeholder="Name / role"><textarea id="fc" rows="2" placeholder="What did they say?"></textarea><button class="btn" id="fba">Add feedback</button></div>`;
+
+const tech=()=>`<h4>Technology used</h4><div class="g3">
+<div class="cd"><h3>Interface</h3><p>${T('ti','Responsive layout with animated home page, built with CSS animations and canvas.')}</p></div>
+<div class="cd"><h3>Frontend</h3><p>${T('tf','HTML5, CSS3 and JavaScript.')}</p></div>
+<div class="cd"><h3>Data</h3><p>${T('tb','Photos, notes and feedback are saved in the browser using localStorage.')}</p></div></div>
+<h4>Files</h4><pre class="f">${T('tfl','index.html — page structure, styles and scripts','pre')}</pre>`;
+
+function wk(i){const w=W[i];return `<article class="wk${i>5?' m':''}${op.has(i)?' o':''}" data-i="${i}"><div class="wh"><b>${i+1}</b><div><div class="wt">${T('wt'+i,w[0])}</div><small class="ph">${w[1]}</small></div><span class="ch">⌄</span></div><div class="wb"><p class="dt">${T('wd'+i,'Add dates')}</p><p>${T('ws'+i,w[2])}</p><ul>${w[3].map((b,j)=>`<li>${T('wb'+i+j,b)}</li>`).join('')}</ul>${i==6?fbh():''}${i==7?tech():''}${gal('w'+i)}</div></article>`}
+
+const F=[["Name","Kuracha Vamsi Krishna"],["Register No.","24JNA30091"],["Year & Branch","III B.Tech · Artificial Intelligence & Data Science"],["College","Sree Venkateswara College of Engineering, Nellore"],["Community","Raju Palem, Nellore District, Andhra Pradesh"],["Project","Tree Plantation"],["Duration","8 weeks"],["Faculty guide","Add name"],["From","Add date"],["To","Add date"]];
+const stu=()=>`<label class="av">${ph.av&&ph.av[0]?`<img src="${ph.av[0]}" alt="Student photo">`:'KV'}<input type="file" accept="image/*" hidden data-p="av"></label><dl>${F.map((f,i)=>`<div><dt>${f[0]}</dt><dd>${T('sf'+i,f[1])}</dd></div>`).join('')}</dl><p class="mut" style="margin-top:18px">Community Service Project · AP State Council of Higher Education</p>`;
+
+const L=(k,a)=>`<ul>${a.map((b,j)=>`<li>${T(k+j,b)}</li>`).join('')}</ul>`;
+const inf=()=>`<h2>More Information</h2><p class="lead">${T('il','Why trees matter, what I asked the community, and what the project achieved.')}</p>
+<div class="g3">
+<div class="cd"><h3>Why trees matter</h3>${L('a',["Trees absorb carbon dioxide and pollutants and release oxygen.","Roots hold fertile topsoil, and trees slow heavy rain, reducing flood risk.","Forests are home to birds, insects and animals.","Shade cools surroundings and can lower cooling costs at home."])}</div>
+<div class="cd"><h3>Survey questions</h3>${L('b',["Are you aware of the environmental benefits of tree plantation?","Have you ever participated in a tree planting event?","Have you faced obstacles when trying to plant trees in your area?","What types of trees are most suitable for your region?","Are you aware of local tree planting initiatives in your community?"])}</div>
+<div class="cd"><h3>Outcomes</h3>${L('c',["Increased environmental awareness about climate change and the role of trees.","Improved air quality and a cooler, more comfortable surrounding.","Community engagement: residents took responsibility for planting and care."])}</div>
+<div class="cd"><h3>Slogans</h3><p class="sl">${T('d0','“Save tree save life”')}</p><p class="sl">${T('d1','“Cut your greed, instead of cutting trees”')}</p><p class="sl">${T('d2','“Don’t make trees rare, keep them with care”')}</p><p class="sl">${T('d3','“Trees on, global warming gone”')}</p></div></div>
+<h4>Thank you</h4><p class="mut">${T('th','My sincere thanks to my college, faculty, the community members, school staff and students, my parents and friends who supported the plantation and awareness activities.')}</p>
+<h4>Photos</h4>${gal('info')}`;
+
+function render(){$('#tl').innerHTML=W.map((_,i)=>wk(i)).join('');$('#sd').innerHTML=stu();$('#inf').innerHTML=inf();setEd()}
+function setEd(){document.body.classList.toggle('edit',ed);document.querySelectorAll('[data-e]').forEach(e=>e.contentEditable=ed);document.querySelectorAll('.ed').forEach(b=>b.textContent=ed?'✓ Done':'✎ Edit')}
+function sync(){const h=location.hash.slice(1);document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('open',p.id==h))}
+addEventListener('hashchange',sync);
+
+document.addEventListener('click',e=>{const t=e.target;
+ if(t.classList.contains('ed')){ed=!ed;setEd();return}
+ const h=t.closest('.wh');if(h){const a=h.parentNode,i=+a.dataset.i;a.classList.toggle('o');a.classList.contains('o')?op.add(i):op.delete(i);return}
+ if(t.dataset.r){const[k,i]=t.dataset.r.split('|');ph[k].splice(+i,1);sv('csp_p',ph);render();return}
+ if(t.dataset.fd){fb.splice(+t.dataset.fd,1);sv('csp_f',fb);render();return}
+ if(t.id=='fba'){const c=$('#fc').value.trim();if(c){fb.push({n:$('#fn').value.trim()||'Community member',c});sv('csp_f',fb);render()}return}
+ if(t.dataset.z!==undefined){$('#lb img').src=t.src;$('#lb').classList.add('on');return}
+ if(t.closest('#lb'))$('#lb').classList.remove('on')});
+document.addEventListener('focusout',e=>{const k=e.target.dataset&&e.target.dataset.e;if(k){tx[k]=e.target.innerText.trim();sv('csp_t',tx)}});
+
+const rs=f=>new Promise(r=>{const fr=new FileReader;fr.onload=()=>{const im=new Image;im.onload=()=>{const s=Math.min(1,1000/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=im.width*s;c.height=im.height*s;c.getContext('2d').drawImage(im,0,0,c.width,c.height);r(c.toDataURL('image/jpeg',.72))};im.src=fr.result};fr.readAsDataURL(f)});
+document.addEventListener('change',async e=>{const k=e.target.dataset&&e.target.dataset.p;if(!k)return;const out=[];for(const f of e.target.files)out.push(await rs(f));
+ ph[k]=k=='av'?out.slice(-1):(ph[k]||[]).concat(out);sv('csp_p',ph);render()});
+
+/* falling leaves */
+const cv=$('#cv'),x=cv.getContext('2d');let w,h,Lv=[];
+function sz(){w=cv.width=innerWidth;h=cv.height=innerHeight}sz();addEventListener('resize',sz);
+for(let i=0;i<30;i++)Lv.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:6+Math.random()*8,v:.3+Math.random()*.7,a:Math.random()*6.28,s:.01+Math.random()*.02,c:`hsla(${90+Math.random()*60},60%,${40+Math.random()*25}%,.5)`});
+function fr(){x.clearRect(0,0,w,h);for(const l of Lv){l.y+=l.v;l.a+=l.s;l.x+=Math.sin(l.a)*.6;if(l.y>h+20){l.y=-20;l.x=Math.random()*w}x.save();x.translate(l.x,l.y);x.rotate(l.a);x.fillStyle=l.c;x.beginPath();x.ellipse(0,0,l.r,l.r/2.2,0,0,6.28);x.fill();x.restore()}requestAnimationFrame(fr)}
+if(!matchMedia('(prefers-reduced-motion:reduce)').matches)fr();
+
+render();sync();
+
+/* load saved data from the local server (if running with server.js) */
+if(useLocalServer)fetch('/api/data').then(r=>r.ok?r.json():null).then(d=>{
+ if(d&&(d.csp_t||d.csp_p||d.csp_f)){['csp_t','csp_p','csp_f'].forEach(k=>{if(d[k])try{localStorage.setItem(k,d[k])}catch(e){}});
+  tx=ld('csp_t',{});ph=ld('csp_p',{});fb=ld('csp_f',[]);render()}
+ else if(localStorage.getItem('csp_t')||localStorage.getItem('csp_p')||localStorage.getItem('csp_f'))push()}).catch(()=>{});
+</script>
+</body>
+</html>
