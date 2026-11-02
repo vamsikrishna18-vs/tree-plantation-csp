@@ -165,8 +165,25 @@ const weekOnePhotos=[
 ["images/week-1/week-1-03.png","Student team sharing a project document with a community representative"],
 ["images/week-1/week-1-04.png","Student team outside a community building"]
 ];
+const weekPhotos={
+ w0:weekOnePhotos,
+ w1:[
+  ["images/week-2/week-2-01.jpg","Preparing the roadside soil for tree planting in North Rajupalem"],
+  ["images/week-2/week-2-02.jpg","Digging a planting spot beside the village road"]
+ ],
+ w2:[
+  ["images/week-3/week-3-01.jpg","Permission letter for the community tree plantation project"],
+  ["images/week-3/week-3-02.jpg","Project team at the school entrance"],
+  ["images/week-3/week-3-03.jpg","Students presenting the tree awareness programme at school"]
+ ],
+ w3:[
+  ["images/week-4/week-4-01.jpg","Watering a newly planted sapling"],
+  ["images/week-4/week-4-02.jpg","Project team planting a sapling together"],
+  ["images/week-4/week-4-03.jpg","Project team and community member beside the planted sapling"]
+ ]
+};
 const gal=k=>{
- const defaults=k==='w0'?weekOnePhotos:[];
+ const defaults=weekPhotos[k]||[];
  const photos=defaults.map(([src,alt])=>`<figure><img src="${src}" alt="${alt}" data-z></figure>`).join('')+(ph[k]||[]).map((src,i)=>`<figure><img src="${src}" alt="Project photo" data-z><button class="x" data-r="${k}|${i}" aria-label="Remove photo">×</button></figure>`).join('');
  return `${photos?'<h4>Photo gallery</h4>':''}<div class="g">${photos}</div><label class="add">+ Add photos<input type="file" accept="image/*" multiple hidden data-p="${k}"></label>`;
 };
