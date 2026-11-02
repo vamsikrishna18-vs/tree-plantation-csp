@@ -29,8 +29,8 @@ h1{font:600 clamp(2.6rem,10vw,6rem)/1 Fraunces,Georgia,serif;letter-spacing:-.02
 @keyframes pop{to{transform:scale(1)}}
 @keyframes sw{50%{transform:rotate(1.6deg)}}
 .c{position:fixed;z-index:5;animation:rise 1s 1.6s both}
-.brand{top:calc(18px + env(safe-area-inset-top,0px));left:20px;font:500 .95rem Fraunces,Georgia,serif;color:var(--mut)}
 .c.t{top:calc(14px + env(safe-area-inset-top,0px));right:16px}
+.c.tlft{top:calc(14px + env(safe-area-inset-top,0px));left:16px}
 .c.l{bottom:calc(18px + env(safe-area-inset-bottom,0px));left:16px}
 .c.r{bottom:calc(18px + env(safe-area-inset-bottom,0px));right:16px}
 .btn{display:inline-block;padding:10px 18px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.07);backdrop-filter:blur(8px);color:var(--ink);text-decoration:none;font:500 .85rem Inter,sans-serif;cursor:pointer;transition:.25s}
@@ -110,8 +110,7 @@ dt{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mu
   </div>
 </main>
 
-<span class="c brand">K. Vamsi Krishna</span>
-<a class="c t btn" href="#student">Student Details</a>
+<a class="c tlft btn" href="#student">Student Details</a>
 <a class="c l btn" href="#journey">Project Journey</a>
 <a class="c r btn" href="#info">More Information</a>
 
@@ -190,6 +189,11 @@ const weekPhotos={
   ["images/week-6/week-6-01.jpg","Project team at the school entrance"],
   ["images/week-6/week-6-02.jpg","Students leading a tree awareness session in the classroom"],
   ["images/week-6/week-6-03.jpg","Project team with a community member beside a young tree"]
+ ],
+ w7:[
+  ["images/week-8/week-8-01.jpg","Project team with a community member beside the school planting area"],
+  ["images/week-8/week-8-02.jpg","Students and a community member holding a sapling together"],
+  ["images/week-8/week-8-03.jpg","Students and a community member planting a sapling"]
  ]
 };
 const gal=k=>{
@@ -209,7 +213,8 @@ const tech=()=>`<h4>Technology used</h4><div class="g3">
 function wk(i){const w=W[i];return `<article class="wk${i>5?' m':''}${op.has(i)?' o':''}" data-i="${i}"><div class="wh"><b>${i+1}</b><div><div class="wt">${T('wt'+i,w[0])}</div><small class="ph">${w[1]}</small></div><span class="ch">⌄</span></div><div class="wb"><p class="dt">${T('wd'+i,'Add dates')}</p><p>${T('ws'+i,w[2])}</p><ul>${w[3].map((b,j)=>`<li>${T('wb'+i+j,b)}</li>`).join('')}</ul>${i==6?fbh():''}${i==7?tech():''}${gal('w'+i)}</div></article>`}
 
 const F=[["Name","Kuracha Vamsi Krishna"],["Register No.","24JNA30091"],["Year & Branch","III B.Tech · Artificial Intelligence & Data Science"],["College","Sree Venkateswara College of Engineering, Nellore"],["Community","Raju Palem, Nellore District, Andhra Pradesh"],["Project","Tree Plantation"],["Duration","8 weeks"],["Faculty guide","Add name"],["From","Add date"],["To","Add date"]];
-const stu=()=>`<label class="av">${ph.av&&ph.av[0]?`<img src="${ph.av[0]}" alt="Student photo">`:'KV'}<input type="file" accept="image/*" hidden data-p="av"></label><dl>${F.map((f,i)=>`<div><dt>${f[0]}</dt><dd>${T('sf'+i,f[1])}</dd></div>`).join('')}</dl><p class="mut" style="margin-top:18px">Community Service Project · AP State Council of Higher Education</p>`;
+const team=[["24JNA30090","KUDUMULA GANGA SRAVAN KALYAN REDDY"],["24JNA30091","KURACHA VAMSI KRISHNA"],["24JNA30086","SHAIK KOUSAR"],["24JNA30074","KANNELURI ABHINASH"],["24JNA30107","MUDDAPOLU NITHEESH"]];
+const stu=()=>`<h3>Project team</h3><div class="g3">${team.map((s,i)=>`<div class="cd"><small>${T('tr'+i,s[0])}</small><p style="font-weight:600;margin-top:4px">${T('tn'+i,s[1])}</p></div>`).join('')}</div><h3 style="margin-top:24px">Project profile</h3><label class="av">${ph.av&&ph.av[0]?`<img src="${ph.av[0]}" alt="Student photo">`:'KV'}<input type="file" accept="image/*" hidden data-p="av"></label><dl>${F.map((f,i)=>`<div><dt>${f[0]}</dt><dd>${T('sf'+i,f[1])}</dd></div>`).join('')}</dl><p class="mut" style="margin-top:18px">Community Service Project · AP State Council of Higher Education</p>`;
 
 const L=(k,a)=>`<ul>${a.map((b,j)=>`<li>${T(k+j,b)}</li>`).join('')}</ul>`;
 const inf=()=>`<h2>More Information</h2><p class="lead">${T('il','Why trees matter, what I asked the community, and what the project achieved.')}</p>
